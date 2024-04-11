@@ -23,6 +23,7 @@ Node 14.7 for project
     ```
       npx sequelize-cli db:seed:all
     ```
+    * Create an .env file with content similar to the .env.example file, then set up the necessary configurations (PORT, NODE_ENV,...)
     * Finally to run the Server, we run the following command
     ```
       npm start
