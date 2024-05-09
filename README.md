@@ -31,3 +31,4 @@ Node 14.7 for project
 2. Frontend (Client - ReactJS)
 
    *...
+   npm start
