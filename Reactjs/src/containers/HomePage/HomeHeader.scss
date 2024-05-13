@@ -114,19 +114,20 @@
     .content-down {
         border: 1px solid green;
         height: 50%;
-        
+
 
         .options {
 
             text-align: center;
             display: flex;
-            grid-gap:50px;
-            justify-content:center;
+            grid-gap: 50px;
+            justify-content: center;
 
 
             .option-child {
                 border: 1px solid red;
                 width: 125px;
+
                 .icon-child {
                     background: white;
                     height: 40px;

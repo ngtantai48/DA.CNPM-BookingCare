@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "lmpossiblE123!",
+    "password": "",
     "database": "cogangteam",
     "host": "127.0.0.1",
     "dialect": "mysql",
