@@ -2,54 +2,58 @@
 
 ## Requirements
 
-Node 14.17 for project
+Node 14.7 for project
 
 ## Install to run the project on localhost
 
-* Create a database named "cogangteam" in Workbench or PHPmyadmin.
-
 1. Backend (Server - NodeJS)
 
-    * In Nodejs folder. Create a .env file with content similar to the .env.example file, then set up the necessary configurations (PORT, NODE_ENV,...).
+   - Create a database named "cogangteam" in Workbench or PHPmyadmin.
+   - Create an .env file with content similar to the .env.example file, then set up the necessary configurations (PORT, NODE_ENV, DB_USERNAME, DB_PASSWORD...).
+   - Open terminal, go into the "NodeJS" folder, then install the necessary packages.
 
-    * In Nodejs/src/config. Create a config.json file with content similar to the config.json.env file, then set up the necessary configurations (username, password, database,...).
+   ```
+     > cd Nodejs
+   ```
 
-    * Install the necessary packages. In **(.../Nodejs>)** terminal, run command:
+   ```
+     > npm install
+   ```
 
-      ```
-        npm install
-      ```
+   - To create a tables in the database from the models
 
-    * Create a tables in the database from the models. In **(.../Nodejs/src>)**
+   ```
+     > npx sequelize-cli db:migrate
+   ```
 
-      ```
-        npx sequelize-cli db:migrate
-      ```
+   - To execute seed files and data will be inserted into the tables
 
-    * To execute seed files and data will be inserted into the tables. In **(.../Nodejs/src>)**
+   ```
+     > npx sequelize-cli db:seed:all
+   ```
 
-      ```
-        npx sequelize-cli db:seed:all
-      ```
+   - Run the Server
 
-    * Run the Server
-
-      ```
-        npm start
-      ```
+   ```
+     > npm start
+   ```
 
 2. Frontend (Client - ReactJS)
 
-    * In Reactjs folder. Create a .env file with content similar to the .env.example file, then set up the necessary configurations.
+   - Open terminal of project and go into the "Reactjs" folder then install the necessary packages.
 
-    * Install the necessary packages. In **(.../Reactjs>)**
+   ```
+     > cd Reactjs
+   ```
 
-        ```
-          npm install
-        ```
+   ```
+     > npm install
+   ```
 
-    * Runs the app in the development mode
+   - Runs the app in the development mode
 
-        ```
-          npm start
-        ```
+   ```
+     > npm start
+   ```
+
+   XTrung hello
