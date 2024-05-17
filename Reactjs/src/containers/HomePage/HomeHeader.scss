@@ -13,15 +13,15 @@
             width: 20%;
             display: flex;
             align-items: center;
-            
+
 
             .header-logo {
-                
+
                 height: 100%;
                 width: 100%;
                 cursor: pointer;
-                transform:scale(0.5,0.5);
-                margin-left:-45px;
+                transform: scale(0.5, 0.5);
+                margin-left: -45px;
             }
 
             i {
@@ -33,7 +33,7 @@
 
         .center-content {
             width: 55%;
-           
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -52,34 +52,58 @@
             justify-content: flex-end;
             align-items: center;
 
-            .support{
-                padding-right:50px;
-                display:flex;
-                align-items:center;
-                cursor:pointer;
-                i{
-                    font-size:15px;
-                    margin-right:5px;
+            .support {
+                padding-right: 50px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                i {
+                    font-size: 15px;
+                    margin-right: 5px;
                 }
             }
-            .language-vi{
-               
-                cursor:pointer;
-                &.active{
-                    color:orange;
+
+            .language-vi {
+                opacity: 0.2;
+                cursor: pointer;
+
+                &.active {
+                    opacity:1;
+                    span {
+                        
+                        color: orange;
+                    }
+
+                }
+                &:hover{
+                    opacity: 0.8;
                 }
             }
+
             //giống như language-vi active
-            .language-en{
-                margin:0 10px;
-                cursor:pointer;
-                &.active{
-                    color:blue;
+            .language-en {
+                margin: 0 10px;
+                cursor: pointer;
+                opacity: 0.2;
+
+                &.active {
+                    opacity:1;
+                    span {
+                        
+                        color: blue;
+                    }
+
+                }
+                &:hover{
+                    opacity: 0.8;
+                }
             }
+            
         }
     }
 }
-}
+
 .home-header-banner {
 
     background-image: url('../../assets/header-background.jpg');
@@ -89,11 +113,11 @@
     background-position: center;
     display: flex;
     flex-direction: column;
-    opacity:0,9;
+    opacity: 0, 9;
 
     .content-up {
-        background-image:linear-gradient(rgba(126,126,126,0.25),rgba(255,255,255,0.1));
-        
+        background-image: linear-gradient(rgba(126, 126, 126, 0.25), rgba(255, 255, 255, 0.1));
+
         padding-top: 15px;
         height: 65%;
 
@@ -140,12 +164,12 @@
     }
 
     .content-down {
-        
+
         height: 35%;
-        display:flex;
-        align-items:flex-end;
-        justify-content:center;
-        background-image:linear-gradient(rgba(255,255,255,0.1),rgba(255,255,255,0.9),rgba(255,255,255,1));
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
 
         .options {
 
@@ -153,11 +177,11 @@
             display: flex;
             grid-gap: 50px;
             justify-content: center;
-            
+
 
 
             .option-child {
-                
+
                 width: 125px;
 
                 .icon-child {
@@ -188,5 +212,3 @@
         }
     }
 }
-
-
