@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 viewEngine(app);
 initWebRoutes(app);
 
+// connectDB();
 
 let port = process.env.PORT || 6969;
 //PORT === undefined => port = 6969
