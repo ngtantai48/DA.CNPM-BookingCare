@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HomeHeader from './HomeHeader';
+import Specialty from './Section/Specialty';
+
 class HomePage extends Component {
 
     render() {
         return (
-           <HomeHeader />
+            <div>
+                <HomeHeader />
+                <Specialty />
+                <div style={{ height: '300px' }}></div>
+            </div>
         );
     }
 
@@ -22,4 +28,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
