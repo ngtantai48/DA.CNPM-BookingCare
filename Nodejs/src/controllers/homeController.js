@@ -13,6 +13,7 @@ let getCRUD = (req, res) => {
 };
 
 let postCRUD = async (req, res) => {
+  console.log(req.body);
   let msg = await CRUDService.createNewUser(req.body);
   return res.send("post crud from server");
 };
@@ -40,9 +41,7 @@ let putCRUD = async (req, res) => {
   let data = req.body;
 
   let allUser = await CRUDService.updateUserData(data);
-  return res.render("display-CRUD.ejs", {
-    dataTable: allUser,
-  });
+  return res.render("Update successfully");
 };
 
 let deleteCRUD = async (req, res) => {
