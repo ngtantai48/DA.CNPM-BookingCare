@@ -170,12 +170,15 @@ let updateUserData = (data) => {
           errCode: 2,
           message: "Missing parameter",
         });
+        return;
       }
       let user = await db.User.findOne({
         where: { id: data.id },
         raw: false,
       });
+
       console.log("check user: ", user);
+
       if (user) {
         user.firstName = data.firstName;
         user.lastName = data.lastName;
@@ -193,6 +196,29 @@ let updateUserData = (data) => {
           errMessage: `User's not found!`,
         });
       }
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+let getAllCodeService = (typeInput) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!typeInput) {
+        resolve({
+          errCode: 1,
+          errMessage: "Missing required parameters",
+        });
+      } else {
+        let res = {};
+        let allcode = await db.Allcode.findAll({
+          where: { type: typeInput },
+        });
+        res.errCode = 0;
+        res.data = allcode;
+        resolve(res);
+      }
     } catch (e) {
       reject(e);
     }
@@ -205,4 +231,5 @@ module.exports = {
   createNewUser: createNewUser,
   deleteUser: deleteUser,
   updateUserData: updateUserData,
+  getAllCodeService: getAllCodeService,
 };
