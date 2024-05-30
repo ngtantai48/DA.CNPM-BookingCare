@@ -7,6 +7,8 @@ import {
   editUserService,
 } from "../../services/userService";
 import "./UserManage.scss";
+import ModalUser from "./ModalUser";
+
 class UserManage extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +32,7 @@ class UserManage extends Component {
       });
     }
   };
+
   handleAddNewUser = () => {
     this.setState({
       isOpenModalUser: true,
@@ -44,7 +47,7 @@ class UserManage extends Component {
 
   toggleUserEditModal = () => {
     this.setState({
-      isOpenModalEditUser: !this.state.isOpenModalEditUser,
+       isOpenModalEditUser: !this.state.isOpenModalEditUser,
     });
   };
   handleDeleteUser = async (user) => {
@@ -88,8 +91,19 @@ class UserManage extends Component {
     let arrUsers = this.state.arrUsers;
     return (
       <div className="users-container">
+        <ModalUser
+          isOpen = {this.state.isOpenModalUser}
+          toggleFromParents = {this.toggleUserModal}
+        />
         <div className="title text-center">MANAGE USERS</div>
-        <div className="mx-1"></div>
+        <div className="mx-1">
+          <button
+            className="btn btn-primary px-3"
+            onClick={() => this.handleAddNewUser()}
+          >
+          <i className="fas fa-plus"></i> Add New User
+          </button>
+        </div>
         <div className="users-table mt-4 mx-3">
           <table id="customers">
             <tbody>
