@@ -21,8 +21,8 @@ let getCRUD = (req, res) => {
 };
 
 let postCRUD = async (req, res) => {
-  console.log(req.body);
   let msg = await CRUDService.createNewUser(req.body);
+  console.log(msg);
   return res.send("post crud from server");
 };
 

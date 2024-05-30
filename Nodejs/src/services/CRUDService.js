@@ -6,6 +6,7 @@ let createNewUser = async (data) => {
   return new Promise(async (resolve, reject) => {
     try {
       let hashPasswordFromBcrypt = await hashUserPassword(data.password);
+      console.log(hashPasswordFromBcrypt);
       await db.User.create({
         email: data.email,
         password: hashPasswordFromBcrypt,
@@ -24,9 +25,9 @@ let createNewUser = async (data) => {
 };
 
 let hashUserPassword = (password) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
-      let hashUserPassword = bcrypt.hashSync(password, salt);
+      let hashUserPassword = await bcrypt.hashSync(password, salt);
       resolve(hashUserPassword);
     } catch (e) {
       reject(e);
@@ -73,6 +74,7 @@ let updateUserData = (data) => {
     try {
       let user = await db.User.findOne({
         where: { id: data.id },
+        raw: false,
       });
       if (user) {
         user.firstName = data.firstName;
@@ -96,7 +98,9 @@ let deleteUserById = (userId) => {
     try {
       let user = await db.User.findOne({
         where: { id: userId },
+        raw: false,
       });
+      console.log("check user: ", user);
       if (user) {
         await user.destroy();
       }
