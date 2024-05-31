@@ -17,7 +17,13 @@ const persistCommonConfig = {
 const adminPersistConfig = {
   ...persistCommonConfig,
   key: "admin",
-  whitelist: ["isLoggedIn", "adminInfo", "language"],
+  whitelist: ["isLoggedIn", "adminInfo"],
+};
+
+const appPersistConfig = {
+  ...persistCommonConfig,
+  key: "app",
+  whitelist: ["language"],
 };
 
 export default (history) =>
@@ -25,5 +31,5 @@ export default (history) =>
     router: connectRouter(history),
     admin: persistReducer(adminPersistConfig, adminReducer),
     user: userReducer,
-    app: appReducer,
+    app: persistReducer(adminPersistConfig, appReducer),
   });
