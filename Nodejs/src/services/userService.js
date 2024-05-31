@@ -83,6 +83,20 @@ let getAllCodeService = (typeInput) => {
   });
 };
 
+//trong file này chưa tìm thấy chỗ code giống trong video, nếu có thì thay code giống bằng code dưới
+// let hashPasswordFromBcrypt = await hashUserPassword(...)
+// await db.User.create({
+//     email: data.email,
+//       password: hashPasswordFromBcrypt,
+//       firstName: data.firstName,
+//       lastName: data.lastName,
+//       phoneNumber: data.phonenumber,
+//       address: data.address,
+//       gender: data.gender,
+//       roleId: data.roleId,
+//       positionId: data.positionId,
+// });
+
 module.exports = {
   getAllCodeService: getAllCodeService,
   handleUserLogin: handleUserLogin,
