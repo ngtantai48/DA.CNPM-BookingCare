@@ -132,5 +132,19 @@
       "remove-assign-fail": "Fail to unassign service package to customer",
       "sure-delete-assign": "Are you sure to unassign service package to customer?"
     }
+  },
+  "manage-user": {
+    "add": "Add User",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "phone-number": "Phone Number",
+    "address": "Address",
+    "gender": "Gender",
+    "role": "Role",
+    "position": "Position",
+    "image": "Avatar",
+    "save": "Save"
   }
 }
