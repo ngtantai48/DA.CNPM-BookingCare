@@ -1,4 +1,7 @@
 {
+  "homeheader": {
+    "welcome": "Xin chào, "
+  },
   "common": {
     "add": "Thêm",
     "edit": "Sửa",
@@ -37,6 +40,19 @@
       "system-parameter": {
         "header": "Tham số hệ thống"
       }
+    },
+    "admin": {
+      "manage-user": "Người dùng",
+      "manage-doctor": "Quản lý bác sĩ",
+      "manage-admin": "Quản lý admin",
+      "crud": "CRUD user",
+      "crud-redux": "CRUD redux",
+      "clinic": "Phòng Khám",
+      "manage-clinic": "Quản lý Phòng Khám",
+      "specialty": "Chuyên khoa",
+      "manage-specialty": "Quản lý chuyên khoa",
+      "hanbook": "Cẩm nang",
+      "manage-handbook": "Quản lý cẩm nang"
     }
   },
   "system": {
