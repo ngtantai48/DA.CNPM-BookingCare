@@ -21,9 +21,35 @@ class ModalUser extends Component {
         this.props.toggleFromParents()
     }
 
-    handleOnChangeInput = (event) => {
-        console.log(event.target.value);
-    }
+    handleOnChangeInput = (event, id) => {
+      let copyState = { ...this.state };
+      copyState[id] = event.target.value;
+      this.setState({
+        ...copyState,
+      }, () => {
+      });
+    };
+
+    checkValidateInput = () => {
+      let isValid = true;
+      let arrInput = ["email", "password", "firstName", "lastName", "address"];
+      for (let i = 0; i < arrInput.length; i++) {
+        if (!this.state[arrInput[i]]) {
+          isValid = false;
+          alert("Missing parameter: " + arrInput[i]);
+          break;
+        }
+      }
+      return isValid;
+    };
+
+    handleAddNewUser = () => {
+      let isValid = this.checkValidateInput();
+      if (isValid === true) {
+        //call api create modal
+        this.props.createNewUser(this.state)
+      }
+    };
 
     render() {
         return (
@@ -42,31 +68,40 @@ class ModalUser extends Component {
                   <label>Email</label>
                   <input
                     type="text"
-                    onChange={(event) => {this.handleOnChangeInput(event)}}
+                    onChange={(event) => {this.handleOnChangeInput(event, 'email')}}
+                    value={this.state.email}
                   />
                 </div>
                 <div className="input-container">
                   <label>Password</label>
                   <input
                     type="password"
+                    onChange={(event) => {this.handleOnChangeInput(event, 'password')}}
+                    value={this.state.password}
                   />
                 </div>
                 <div className="input-container">
                   <label>First name</label>
                   <input
                     type="text"
+                    onChange={(event) => {this.handleOnChangeInput(event, 'firstName')}}
+                    value={this.state.firstName}
                   />
                 </div>
                 <div className="input-container">
                   <label>Last name</label>
                   <input
                     type="text"
+                    onChange={(event) => {this.handleOnChangeInput(event, 'lastName')}}
+                    value={this.state.lastName}
                   />
                 </div>
                 <div className="input-container">
                   <label>Address</label>
                   <input
                     type="text"
+                    onChange={(event) => {this.handleOnChangeInput(event, 'address')}}
+                    value={this.state.address}
                   />
                 </div>
               </div>

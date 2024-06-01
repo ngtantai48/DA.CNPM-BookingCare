@@ -45,6 +45,11 @@ class UserManage extends Component {
     });
   };
 
+  createNewUser = (data) => {
+    alert(' call me ')
+    console.log(' check new user: ', data);
+  }
+
   toggleUserEditModal = () => {
     this.setState({
        isOpenModalEditUser: !this.state.isOpenModalEditUser,
@@ -94,6 +99,7 @@ class UserManage extends Component {
         <ModalUser
           isOpen = {this.state.isOpenModalUser}
           toggleFromParents = {this.toggleUserModal}
+          createNewUser={this.createNewUser}
         />
         <div className="title text-center">MANAGE USERS</div>
         <div className="mx-1">

@@ -182,6 +182,7 @@ let updateUserData = (data) => {
         where: { id: data.id },
         raw: false,
       });
+      console.log('check user: ', user)
       if (user) {
         user.firstName = data.firstName;
         user.lastName = data.lastName;
