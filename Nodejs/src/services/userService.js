@@ -3,70 +3,70 @@ import bcrypt from 'bcryptjs'
 
 
 let handleUserLogin = (email, password) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let userData = {};
+  return new Promise(async (resolve, reject) => {
+    try {
+      let userData = {};
 
-        let isExist = await checkUserEmail(email);
-        if (isExist) {
+      let isExist = await checkUserEmail(email);
+      if (isExist) {
 
-          let user = await db.User.findOne({
-            attributes: [
-                "email",
-                "roleId",
-                "password",
-            ],
-            where: { email: email },
-            raw: true,
-          });
-          if (user) {
-            //compare password
-            let check = await bcrypt.compareSync(password, user.password);
-            if (check) {
-              userData.errCode = 0;
-              userData.errMessage = "OK";
+        let user = await db.User.findOne({
+          attributes: [
+            "email",
+            "roleId",
+            "password",
+          ],
+          where: { email: email },
+          raw: false,
+        });
+        if (user) {
+          //compare password
+          let check = await bcrypt.compareSync(password, user.password);
+          if (check) {
+            userData.errCode = 0;
+            userData.errMessage = "OK";
 
-              delete user.password;
-              userData.user = user;
-            } else {
-              userData.errCode = 3;
-              userData.errMessage = "wrong password";
-            }
-
+            delete user.password;
+            userData.user = user;
           } else {
-            userData.errCode = 2;
-            userData.errMessage = `User's not found`;
+            userData.errCode = 3;
+            userData.errMessage = "wrong password";
           }
-          
+
         } else {
-          userData.errCode = 1;
-          userData.errMessage = `Your's Email isn't exist in your system. Plz try other email`;
+          userData.errCode = 2;
+          userData.errMessage = `User's not found`;
         }
-  
-        resolve(userData);
-      } catch (e) {
-        reject(e);
+
+      } else {
+        userData.errCode = 1;
+        userData.errMessage = `Your's Email isn't exist in your system. Plz try other email`;
       }
-    });
-  };
+
+      resolve(userData);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 
 let checkUserEmail = (userEmail) => {
-    return (async (resolve, reject) => {
-        try {
-            let user = await db.User.findOne({
-                where: {email : userEmail}
-            })
-            if(user) {
-                resolve(true)
-            } else {
-                resolve(false)
-            }
-        } catch (e) {
-            reject(e)
-        }
-    })
+  return (async (resolve, reject) => {
+    try {
+      let user = await db.User.findOne({
+        where: { email: userEmail }
+      })
+      if (user) {
+        resolve(true)
+      } else {
+        resolve(false)
+      }
+    } catch (e) {
+      reject(e)
+    }
+  })
 }
 
 module.exports = {
-    handleUserLogin: handleUserLogin
+  handleUserLogin: handleUserLogin
 }
