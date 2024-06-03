@@ -7,6 +7,7 @@ import * as actions from "../../../store/actions";
 import "../Admin/UserRedux.scss";
 import "react-image-lightbox/style.css";
 import TableManageUser from "./TableManageUser";
+import Lightbox from "react-image-lightbox";
 
 class UserRedux extends Component {
   constructor(props) {
@@ -52,24 +53,24 @@ class UserRedux extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.genderRedux !== this.props.genderRedux) {
-      let arrGendres = this.props.genderRedux;
+      let arrGenders = this.props.genderRedux;
       this.setState({
-        genderArr: arrGendres,
-        gender: arrGendres && arrGendres.length > 0 ? arrGendres[0].keyMap : "",
+        genderArr: arrGenders,
+        gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].keyMap : "",
       });
     }
     if (prevProps.roleRedux !== this.props.roleRedux) {
       let arrRoles = this.props.roleRedux;
       this.setState({
-        genderArr: arrRoles,
-        gender: arrRoles && arrRoles.length > 0 ? arrRoles[0].keyMap : "",
+        roleArr: arrRoles,
+        role: arrRoles && arrRoles.length > 0 ? arrRoles[0].keyMap : "",
       });
     }
     if (prevProps.positionRedux !== this.props.positionRedux) {
       let arrPositions = this.props.positionRedux;
       this.setState({
-        genderArr: arrPositions,
-        gender:
+        positionArr: arrPositions,
+        position:
           arrPositions && arrPositions.length > 0 ? arrPositions[0].keyMap : "",
       });
     }
@@ -85,10 +86,10 @@ class UserRedux extends Component {
         lastName: "",
         phoneNumber: "",
         address: "",
-        gender: arrGenders && arrGenders.length > 0 ? arrGenders.keyMap[0] : "",
-        role: arrRoles && arrRoles.length > 0 ? arrRoles.keyMap[0] : "",
+        gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].keyMap : "",
+        role: arrRoles && arrRoles.length > 0 ? arrRoles[0].keyMap : "",
         position:
-          arrPositions && arrPositions.length > 0 ? arrPositions.keyMap[0] : "",
+          arrPositions && arrPositions.length > 0 ? arrPositions[0].keyMap : "",
         avatar: "",
         actions: CRUD_ACTIONS.CREATE,
         previewImgUrl: "",
@@ -147,6 +148,7 @@ class UserRedux extends Component {
         roleId: this.state.role,
         positionId: this.state.position,
         avatar: this.state.avatar,
+        id: this.state.userEditId,
       });
     }
   };
@@ -183,7 +185,7 @@ class UserRedux extends Component {
     if (user.image) {
       imageBase64 = new Buffer(user.image, "base64").toString("binary");
     }
-    this.state({
+    this.setState({
       email: user.email,
       password: "HARDCODE",
       firstName: user.firstName,
@@ -394,7 +396,7 @@ class UserRedux extends Component {
                     onChange={(event) => this.handleOnchangeImage(event)}
                   />
                   <label className="label-upload" htmlFor="previewImg">
-                    Tải Ảnh <i className="fas fa-up-load"></i>
+                    Tải Ảnh <i className="fas fa-upload"></i>
                   </label>
                   <div
                     className="preview-image"
@@ -458,7 +460,8 @@ const mapDispatchToProps = (dispatch) => {
     getGenderStart: () => dispatch(actions.fetchGenderStart()),
     getPositionStart: () => dispatch(actions.fetchPositionStart()),
     getRoleStart: () => dispatch(actions.fetchRoleStart()),
-    createNewUser: () => dispatch(actions.createNewUser(data)),
+    createNewUser: (data) => dispatch(actions.createNewUser(data)),
+    editAUserRedux: (data) => dispatch(actions.editAUser(data)),
     fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
     processLogout: () => dispatch(actions.processLogout()),
     changeLanguageAppRedux: (language) =>
