@@ -37,6 +37,9 @@
             "system-parameter": {
                 "header": "Tham số hệ thống"
             }
+        },
+        "doctor": {
+            "manage-schedule": "Quản lí kế hoạch khám bệnh"
         }
     },
     "system": {

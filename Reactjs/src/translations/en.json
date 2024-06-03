@@ -37,6 +37,9 @@
             "system-parameter": {
                 "header": "System-parameter"
             }
+        },
+        "doctor": {
+            "manage-schedule": "Manage Doctor's schedule"
         }
     },
     "system": {
