@@ -98,3 +98,20 @@ class ManageDoctor extends Component {
         )
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        language: state.app.language,
+        allDoctors: state.admin.allDoctors,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchAllDoctors: () => dispatch(actions.fetchAllDoctors()),
+        saveDetailDoctor: (data) => dispatch(actions.saveDetailDoctor(data))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageDoctor);

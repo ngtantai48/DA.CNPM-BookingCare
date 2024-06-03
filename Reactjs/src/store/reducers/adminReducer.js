@@ -2,7 +2,8 @@ import actionTypes from '../actions/actionTypes';
 
 const initialState = {
     isLoggedIn: false,
-    adminInfo: null
+    adminInfo: null,
+    allScheduleTime: []
 }
 
 const appReducer = (state = initialState, action) => {
@@ -25,6 +26,17 @@ const appReducer = (state = initialState, action) => {
                 isLoggedIn: false,
                 adminInfo: null
             }
+
+        case actionTypes.FETCH_ALL_ALLCODE_SCHEDULE_TIME_SUCCESS:
+            state.allScheduleTime = action.dataTime;
+            return {
+                ...state,
+            };
+        case actionTypes.FETCH_ALL_ALLCODE_SCHEDULE_TIME_FAILED:
+            state.allScheduleTime = [];
+            return {
+                ...state,
+            };
         default:
             return state;
     }
