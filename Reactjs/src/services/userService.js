@@ -25,7 +25,18 @@ const editUserService = (inputData) => {
 };
 
 const createNewUserService = (data) => {
-    return axios.post("/api/create-new-user", data);
+  return axios.post("/api/create-new-user", data);
 };
 
-export { handleLoginApi, getAllUsers, deleteUserService, editUserService, createNewUserService };
+const getTopDoctorHomeService = (limit) => {
+  return axios.get(`/api/top-doctor-home?limit=${limit}`);
+};
+
+export {
+  handleLoginApi,
+  getAllUsers,
+  deleteUserService,
+  editUserService,
+  createNewUserService,
+  getTopDoctorHomeService,
+};
