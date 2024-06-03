@@ -138,5 +138,20 @@
             "remove-assign-fail": "Bỏ gán gói dịch vụ cho khách hàng thất bại",
             "sure-delete-assign": "Bạn có chắc chắn muốn bỏ gán gói dịch vụ cho khách hàng?"
         }
+    },
+    "booking-modal": {
+        "title":"Thông tin đặt lịch khám bệnh",
+        "fullName":"Họ và tên",
+        "phoneNumber":"Số điện thoại",
+        "email":"Địa chỉ email",
+        "address":"Địa chỉ liên lạc",
+        "reason":"Lý do khám",
+        "birthday":"Ngày sinh",
+        "gender":"Giới tính",
+        "btnConfirm":"Xác nhận",
+        "btnCancel":"Huỷ",
+        "priceBooking":"Miễn phí đặt lịch",
+        "price":"Giá khám:"
     }
+    
 }
