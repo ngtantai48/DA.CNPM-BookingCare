@@ -7,6 +7,8 @@ import * as actions from "../../../store/actions";
 import { CRUD_ACTIONS, LANGUAGES, dateFormat } from "../../../utils";
 import DatePicker from "../../../components/Input/DatePicker";
 import moment from "moment";
+import { toast } from "react-toastify";
+import _ from "lodash";
 
 
 class ManageSchedule extends Component {
@@ -73,7 +75,61 @@ class ManageSchedule extends Component {
         })
     }
 
+    handleClickBtnTime = (time) => {
+        let { rangeTime } = this.state;
+        if (rangeTime && rangeTime.length > 0) {
+            rangeTime = rangeTime.map((item) => {
+                if (item.id === time.id) {
+                    item.isSelected = !item.isSelected;
+                }
+                return item;
+            });
+            this.setState({
+                rangeTime: rangeTime,
+            });
+        }
+    };
 
+    handleSaveSchedule = async () => {
+        let { rangeTime, selectedDoctor, currentDate } = this.state;
+        let result = [];
+
+        if (!currentDate) {
+            if (this.props.language == "en") {
+                toast.error("Invalid date!");
+            } else {
+                toast.error("Ngày không hợp lệ!");
+            }
+
+            return;
+        }
+        if (selectedDoctor && _.isEmpty(selectedDoctor)) {
+            if (this.props.language == "en") {
+                toast.error("Invalid selected doctor!");
+            } else {
+                toast.error("Bác sĩ chọn không hợp lệ!");
+            }
+            return;
+        }
+
+        let formattedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+
+        if (rangeTime && rangeTime.length > 0) {
+            let selectedTime = rangeTime.filter((item) => item.isSelected === true);
+            if (selectedTime && selectedTime.length > 0) {
+                selectedTime.map((schedule) => {
+                    let object = {};
+                    object.doctorId = selectedDoctor.value;
+                    object.date = formattedDate;
+                    object.timeType = schedule.keyMap;
+                    result.push(object);
+                });
+            } else {
+                toast.error("Invalid selected time!");
+                return;
+            }
+        }
+    }
 
     render() {
         let { rangeTime } = this.state;
@@ -140,7 +196,6 @@ class ManageSchedule extends Component {
         )
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {
