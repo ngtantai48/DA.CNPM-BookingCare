@@ -17,6 +17,9 @@ let initWebRoutes = (app) => {
 
   router.post('/api/login', userController.handleLogin)
 
+
+  router.post('/api/bulk-create-schedule', doctorController.bulkCreateSchedule)
+
   return app.use("/", router);
 };
 
