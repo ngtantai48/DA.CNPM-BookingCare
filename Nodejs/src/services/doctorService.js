@@ -102,7 +102,7 @@ let bulkCreateSchedule = (data) => {
                 });
             } else {
                 let schedule = data.arrSchedule;
-                
+
                 if (schedule && schedule.length > 0) {
                     schedule = schedule.map((item) => {
                         item.maxNumber = MAX_NUMBER_SCHEDULE;
@@ -147,8 +147,50 @@ let bulkCreateSchedule = (data) => {
     })
 }
 
+let getScheduleByDate = (doctorId, date) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!doctorId || !date) {
+                resolve({
+                    errCode: 1,
+                    errMessage: "Missing required parameter",
+                });
+            } else {
+                let dataSchedule = await db.Schedule.findAll({
+                    where: { doctorId: doctorId, date: date },
+                    include: [
+                        {
+                            model: db.Allcode,
+                            as: "timeTypeData",
+                            attributes: ["valueEn", "valueVi", "value"],
+                        },
+                        {
+                            model: db.User,
+                            as: "doctorData",
+                            attributes: ["firstName", "lastName"],
+                        },
+                    ],
+                    raw: false,
+                    nest: true,
+                });
+
+                if (!dataSchedule) {
+                    dataSchedule = [];
+                }
+                resolve({
+                    errCode: 0,
+                    data: dataSchedule,
+                });
+            }
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
 module.exports = {
     getDetailDoctorById: getDetailDoctorById,
     saveDetailInfoDoctor: saveDetailInfoDoctor,
-    bulkCreateSchedule: bulkCreateSchedule
+    bulkCreateSchedule: bulkCreateSchedule,
+    getScheduleByDate: getScheduleByDate
 }

@@ -15,7 +15,8 @@ let initWebRoutes = (app) => {
   router.get("/delete-crud", homeController.deleteCRUD);
   //rest api
 
-  router.post('/api/login', userController.handleLogin)
+  router.post('/api/login', userController.handleLogin);
+  router.get("/api/get-schedule-doctor-by-date", doctorController.getScheduleByDate);
 
 
   router.post('/api/bulk-create-schedule', doctorController.bulkCreateSchedule)
