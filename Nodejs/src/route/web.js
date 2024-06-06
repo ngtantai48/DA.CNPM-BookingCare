@@ -22,6 +22,7 @@ let initWebRoutes = (app) => {
   router.delete('/api/delete-user', userController.handleDeleteUser);
   
   router.post('/api/patient-book-appointment',patientController.postBookApointment);
+  router.post('/api/verify-book-appointment',patientController.postVerifyBookAppointment);
   return app.use("/", router);
 };
 
