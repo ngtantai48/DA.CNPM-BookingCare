@@ -27,5 +27,13 @@ const editUserService = (inputData) => {
 const postPatientBookAppointment = (data) => {
   return axios.post('/api/patient-book-appointment',data)
 }
+const postVerifyBookAppointment = (data) => {
+  return axios.post('/api/verify-book-appointment',data)
+}
 
-export { handleLoginApi, getAllUsers, deleteUserService, editUserService, createNewUserService, postPatientBookAppointment };
+export { handleLoginApi, 
+  getAllUsers, 
+  deleteUserService, editUserService, 
+  createNewUserService, postPatientBookAppointment,
+  postVerifyBookAppointment
+};
