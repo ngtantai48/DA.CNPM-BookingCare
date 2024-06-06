@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            Allcode.hasMany(models.Schedule, {
+                foreignKey: 'timeType',
+                as: 'timeTypeData'
+            })
         }
     };
     Allcode.init({
