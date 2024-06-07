@@ -240,10 +240,15 @@ let getAllCodeService = (typeInput) => {
 // });
 
 module.exports = {
+<<<<<<< HEAD
   handleUserLogin: handleUserLogin,
   getAllUsers: getAllUsers,
   createNewUser: createNewUser,
   deleteUser: deleteUser,
   updateUserData: updateUserData,
   getAllCodeService: getAllCodeService,
+=======
+  getAllCodeService: getAllCodeService,
+  handleUserLogin: handleUserLogin,
+>>>>>>> db9f0b35688622ed57b8bc3fe8a290e935bd7666
 };
