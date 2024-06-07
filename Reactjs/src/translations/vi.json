@@ -152,6 +152,9 @@
         "btnCancel":"Huỷ",
         "priceBooking":"Miễn phí đặt lịch",
         "price":"Giá khám:"
+    },
+    "homepage":{
+        "speciality-popular":"Chuyên khoa phổ biến"
     }
     
 }

@@ -152,5 +152,8 @@
             "remove-assign-fail": "Fail to unassign service package to customer",
             "sure-delete-assign": "Are you sure to unassign service package to customer?"
         }
+    },
+    "homepage":{
+        "specialty-popular": "Pupular specialties"
     }
 }
