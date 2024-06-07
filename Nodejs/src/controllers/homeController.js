@@ -4,6 +4,7 @@ import db from "../models/index";
 let getHomePage = async (req, res) => {
   try {
     let data = await db.User.findAll();
+    console.log(data);
     return res.render("homepage.ejs", {
       data: JSON.stringify(data),
     });
@@ -21,6 +22,7 @@ let getCRUD = (req, res) => {
 };
 
 let postCRUD = async (req, res) => {
+  console.log(req.body);
   let msg = await CRUDService.createNewUser(req.body);
   return res.send("post crud from server");
 };
@@ -46,7 +48,7 @@ let getEditCRUD = async (req, res) => {
 
 let putCRUD = async (req, res) => {
   let data = req.body;
-
+  console.log(data);
   let allUser = await CRUDService.updateUserData(data);
   return res.render("display-CRUD.ejs", {
     dataTable: allUser,

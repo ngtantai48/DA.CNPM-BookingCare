@@ -1,20 +1,25 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require("sequelize");
 
 // Option 3: Passing parameters separately (other dialects)
-const sequelize = new Sequelize('cogangteam', 'root', '', {
-  host: 'localhost',
-  dialect:'mysql'
-});
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USERNAME,
+  process.env.DB_PASSWORD,
+  {
+    host: "localhost",
+    dialect: "mysql",
+  }
+);
 
 let connectDB = async () => {
-    try {
-        await sequelize.authenticate()
-        console.log('Connect has been established successfully');
-    } catch (error) {
-        console.error('Unable to connect to the database', error)
-    }
-}
+  try {
+    await sequelize.authenticate();
+    console.log("Connect has been established successfully");
+  } catch (error) {
+    console.error("Unable to connect to the database", error);
+  }
+};
 
-module.exports = connectDB
+module.exports = connectDB;
