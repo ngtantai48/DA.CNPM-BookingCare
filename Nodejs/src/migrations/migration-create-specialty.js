@@ -11,11 +11,11 @@ module.exports = {
       name: {
         type: Sequelize.TEXT,
       },
-      description: {
+      descriptionHTML: {
         type: Sequelize.TEXT,
       },
       image: {
-        type: Sequelize.STRING,
+        type: Sequelize.BLOB('long'),
       },
       createdAt: {
         allowNull: false,
@@ -24,6 +24,9 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+      },
+      descriptionMarkdown: {
+        type: Sequelize.TEXT,
       },
     });
   },
